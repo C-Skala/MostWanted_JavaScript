@@ -72,7 +72,28 @@ function mainMenu(person, people) {
         case "family":
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
-            let personFamily = findPersonFamily(person[0], people);
+            let personFamily = findPersonFamily(person[0], people)
+            function findPersonFamily(array){    
+            try{
+                    let parentTwo = parseInt(person[0].parents[1])
+                    
+                    //parentTwoId === people.id.includes(parentTwo)
+                } catch (error){
+                    console.log(error)
+                }try{
+                    let parentOne = parseInt(person[0].parents[0])
+                    //parentOneId === people.id.includes(parentOne)
+                }catch(error){
+                    console.log(error)
+                }
+                alert(
+                    people
+                        .map(function (person, parentOneId, parentTwoId) {
+                            return `${parentOneId.firstName} ${parentOneId.lastName} and ${parentTwoId.firstName} ${parentTwoId.lastName} are ${person.firstName} ${person.lastName} parents`;
+                        })
+                        .join("\n")
+                );
+                }
             alert(personFamily);
             break;
         case "descendants":
