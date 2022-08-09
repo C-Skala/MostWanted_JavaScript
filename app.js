@@ -73,27 +73,7 @@ function mainMenu(person, people) {
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people)
-            function findPersonFamily(array){    
-            try{
-                    let parentTwo = parseInt(person[0].parents[1])
-                    
-                    //parentTwoId === people.id.includes(parentTwo)
-                } catch (error){
-                    console.log(error)
-                }try{
-                    let parentOne = parseInt(person[0].parents[0])
-                    //parentOneId === people.id.includes(parentOne)
-                }catch(error){
-                    console.log(error)
-                }
-                alert(
-                    people
-                        .map(function (person, parentOneId, parentTwoId) {
-                            return `${parentOneId.firstName} ${parentOneId.lastName} and ${parentTwoId.firstName} ${parentTwoId.lastName} are ${person.firstName} ${person.lastName} parents`;
-                        })
-                        .join("\n")
-                );
-                }
+            
             alert(personFamily);
             break;
         case "descendants":
@@ -211,3 +191,53 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+// function findPersonFamily(){
+//     try{
+//         let personParents = people.filter(function(person){
+//             if(people.id.includes(person[0].parents)){
+//                 return `${personParents} are the parents`;
+//             }
+//         })
+//     } catch (error){
+//         console.log(error)
+//     }try{
+//         let personSpouse = people.filter(function(person){
+//             if(people.id.includes(person[0].spouse)){
+//                 return `${personSpouse} is the spouse`; 
+//             }
+//         })
+//     }catch(error){
+//         console.log(error)
+//     }
+//     }
+
+function findSiblings(person,people){
+    let newArray = people.filter(function(el){
+        if (person.id === el.id){
+            return false;
+        }
+        if(person.parents.includes(el.parents[0]) || person.parents.includes(el.parents[1])){
+            return true;
+        };
+    })
+    return newArray;
+}
+
+function findSpouse(person,people){
+    let newArray = people.filter(function(el){
+        if(person.currentSpouse == person.id){
+            return true;
+        }
+    });
+    return newArray;
+}
+
+function findParents(person,people){
+    let newArray = people.filter(function(el){
+        if(person.id.includes(el.parents[0]) || person.id.includes(el.parents[1])){
+            return true;
+        }
+    })
+    return newArray;
+}
