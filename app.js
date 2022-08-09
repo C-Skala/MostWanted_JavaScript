@@ -73,6 +73,28 @@ function mainMenu(person, people) {
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people)
+                function findPersonFamily(person, people){
+                    let newArray = "";
+                    let siblings = findSiblings(person, people);
+                    let spouse = findSpouse(person, people);
+                    //let parents = findParents(person, people);
+
+                    if (siblings != null){
+                        for(let i=0; i<siblings.length; i++){
+                            newArray += `siblings: ${siblings[i].firstName} ${siblings[i].lastName}\n`
+                        }
+                    }
+                    if (spouse != null){
+                        for(let i=0; i< spouse.length; i++){
+                            newArray += `spouse: ${spouse[i].firstName} ${spouse[i].lastName}\n`
+                        }
+                    }
+                    //if (parents != null){
+                    //    for(let i=0; i < parents.length; i++){
+                    //        newArray += `parents: ${parents[i].firstName} ${parents[i].lastName}\n`
+                    //    }
+                    //}
+                }
             
             alert(personFamily);
             break;
@@ -192,25 +214,6 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-// function findPersonFamily(){
-//     try{
-//         let personParents = people.filter(function(person){
-//             if(people.id.includes(person[0].parents)){
-//                 return `${personParents} are the parents`;
-//             }
-//         })
-//     } catch (error){
-//         console.log(error)
-//     }try{
-//         let personSpouse = people.filter(function(person){
-//             if(people.id.includes(person[0].spouse)){
-//                 return `${personSpouse} is the spouse`; 
-//             }
-//         })
-//     }catch(error){
-//         console.log(error)
-//     }
-//     }
 
 function findSiblings(person,people){
     let newArray = people.filter(function(el){
@@ -241,3 +244,25 @@ function findParents(person,people){
     })
     return newArray;
 }
+
+function searchByTrait(people){
+    let userInputPrompt = prompt (`please type the trait to search by: \n You will be able to search for more than one, but we will preform one at a time \n Traits:\n gender \n height \n weight \n eye color \n occupation`);
+    let userInputAnswer = ptompt('Please enter a value based on your previous selection: \n (gender = male or female)\n(height = whole number in in.)\n(weight = whole number in lbs.)\n(eye color = single color)\n (occupation = single word occupation)');
+    let foundPersons = people.filter(function(el){
+        if(el[userInputPrompt].includes(userInputAnswer){
+            return true;
+        }
+    })
+}
+    //let newList = people.filter(function(foundDriver){
+    //    if(userInput = 'gender'){
+    //        let genderInput = prompt('please type male or female');
+    //        if(people.gender.includes(genderInput)){
+    //            return true;
+    //        }
+    //    }
+    //    if userInput = 'height'
+    //    if userInput = 'weight'
+    //    if userInput = 'eye color'
+    //    if userInput = 'occupation'
+    //})
