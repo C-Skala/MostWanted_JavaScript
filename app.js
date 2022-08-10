@@ -245,14 +245,27 @@ function findParents(person,people){
     return newArray;
 }
 
-function searchByTrait(people){
-    let userInputPrompt = prompt (`please type the trait to search by: \n You will be able to search for more than one, but we will preform one at a time \n Traits:\n gender \n height \n weight \n eye color \n occupation`);
-    let userInputAnswer = ptompt('Please enter a value based on your previous selection: \n (gender = male or female)\n(height = whole number in in.)\n(weight = whole number in lbs.)\n(eye color = single color)\n (occupation = single word occupation)');
+function searchByTraits(people){
+    let userInputPrompt = prompt (`please type the trait to search by: 
+    \n You will be able to search for more than one, but we will preform one at a time \n Traits:\n gender \n height \n weight \n eyeColor \n occupation`);
+    let userInputAnswer = prompt(`Please enter a value based on your previous selection:
+     \n (gender = male or female)\n(height = whole number in in.)\n(weight = whole number in lbs.)\n(eye color = single color)\n (occupation = single word occupation)`);
     let foundPersons = people.filter(function(el){
-        if(el[userInputPrompt].includes(userInputAnswer){
+        try{
+            if(el[userInputPrompt].includes(userInputAnswer)){
             return true;
+            }
+        }catch (error){
+            console.log(error)
         }
+        finally{
+            if(el[userInputPrompt]===parseInt(userInputAnswer)){
+                return true;
+        }
+        }
+        return foundPersons;
     })
+    
 }
     //let newList = people.filter(function(foundDriver){
     //    if(userInput = 'gender'){
