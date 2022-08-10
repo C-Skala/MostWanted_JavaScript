@@ -32,6 +32,9 @@ function app(people) {
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
             searchResults = searchByTraits(people);
+            let foundPeopleByTraits = searchByTraits(people).map(function(el){
+                alert = `the found people are ${el.firstName} ${el.lastName}\n`
+            })
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -77,7 +80,7 @@ function mainMenu(person, people) {
                     let newArray = "";
                     let siblings = findSiblings(person, people);
                     let spouse = findSpouse(person, people);
-                    //let parents = findParents(person, people);
+                    let parents = findParents(person, people);
 
                     if (siblings != null){
                         for(let i=0; i<siblings.length; i++){
@@ -89,11 +92,11 @@ function mainMenu(person, people) {
                             newArray += `spouse: ${spouse[i].firstName} ${spouse[i].lastName}\n`
                         }
                     }
-                    //if (parents != null){
-                    //    for(let i=0; i < parents.length; i++){
-                    //        newArray += `parents: ${parents[i].firstName} ${parents[i].lastName}\n`
-                    //    }
-                    //}
+                    if (parents != null){
+                        for(let i=0; i < parents.length; i++){
+                            newArray += `parents: ${parents[i].firstName} ${parents[i].lastName}\n`
+                        }
+                    }
                 }
             
             alert(personFamily);
@@ -267,15 +270,3 @@ function searchByTraits(people){
     })
     
 }
-    //let newList = people.filter(function(foundDriver){
-    //    if(userInput = 'gender'){
-    //        let genderInput = prompt('please type male or female');
-    //        if(people.gender.includes(genderInput)){
-    //            return true;
-    //        }
-    //    }
-    //    if userInput = 'height'
-    //    if userInput = 'weight'
-    //    if userInput = 'eye color'
-    //    if userInput = 'occupation'
-    //})
