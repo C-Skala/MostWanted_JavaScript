@@ -249,24 +249,23 @@ function findParents(person,people){
 }
 
 function searchByTraits(people){
+    //while numberOfSearches == <5
+    //let numberOfSearches = prompt('how many searches do you want to do? (whole number)')
     let userInputPrompt = prompt (`please type the trait to search by: 
     \n You will be able to search for more than one, but we will preform one at a time \n Traits:\n gender \n height \n weight \n eyeColor \n occupation`);
     let userInputAnswer = prompt(`Please enter a value based on your previous selection:
      \n (gender = male or female)\n(height = whole number in in.)\n(weight = whole number in lbs.)\n(eye color = single color)\n (occupation = single word occupation)`);
     let foundPersons = people.filter(function(el){
-        try{
-            if(el[userInputPrompt].includes(userInputAnswer)){
-            return true;
-            }
-        }catch (error){
-            console.log(error)
+        if(el[userInputPrompt]===(userInputAnswer)){
+        return true;
         }
-        finally{
-            if(el[userInputPrompt]===parseInt(userInputAnswer)){
-                return true;
-        }
-        }
-        return foundPersons;
     })
-    
+    displayPeople(foundPersons)
+    return foundPersons;
 }
+
+function findPersonDescendants(person, people){
+    let subarray = person.id;
+    array = [person];
+    \
+} 
