@@ -80,7 +80,7 @@ function mainMenu(person, people) {
                     let newArray = "";
                     let siblings = findSiblings(person, people);
                     let spouse = findSpouse(person, people);
-                    let parents = findParents(person, people);
+                    //let parents = findParents(person, people);
 
                     if (siblings != null){
                         for(let i=0; i<siblings.length; i++){
@@ -97,6 +97,8 @@ function mainMenu(person, people) {
                             newArray += `parents: ${parents[i].firstName} ${parents[i].lastName}\n`
                         }
                     }
+                    displayPeople(newArray)
+                    return (newArray);
                 }
             
             alert(personFamily);
@@ -227,7 +229,7 @@ function findSiblings(person,people){
             return true;
         };
     })
-    return newArray;
+    return (newArray);
 }
 
 function findSpouse(person,people){
@@ -236,28 +238,29 @@ function findSpouse(person,people){
             return true;
         }
     });
-    return newArray;
+    return (newArray);
 }
 
 function findParents(person,people){
     let newArray = people.filter(function(el){
-        if(person.id.includes(el.parents[0]) || person.id.includes(el.parents[1])){
+        if(person.parents[0].el.id || person.parents[1].el.id){
             return true;
         }
     })
-    return newArray;
+    return (newArray);
 }
 
 function searchByTraits(people){
-    //while numberOfSearches == <5
+    //while searchAmount =
     //let numberOfSearches = prompt('how many searches do you want to do? (whole number)')
+    
     let userInputPrompt = prompt (`please type the trait to search by: 
     \n You will be able to search for more than one, but we will preform one at a time \n Traits:\n gender \n height \n weight \n eyeColor \n occupation`);
     let userInputAnswer = prompt(`Please enter a value based on your previous selection:
      \n (gender = male or female)\n(height = whole number in in.)\n(weight = whole number in lbs.)\n(eye color = single color)\n (occupation = single word occupation)`);
     let foundPersons = people.filter(function(el){
-        if(el[userInputPrompt]===(userInputAnswer)){
-        return true;
+        if(el[userInputPrompt]===(userInputAnswer) || el[userInputPrompt]===parseInt(userInputAnswer)){
+            return true;
         }
     })
     displayPeople(foundPersons)
@@ -267,5 +270,5 @@ function searchByTraits(people){
 function findPersonDescendants(person, people){
     let subarray = person.id;
     array = [person];
-    \
+    
 } 
